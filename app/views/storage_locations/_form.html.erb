@@ -1,0 +1,51 @@
+<%= form_for(@storage_location) do |f| %>
+  <% if @storage_location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@storage_location.errors.count, "error") %> prohibited this storage_location from being saved:</h2>
+
+      <ul>
+      <% @storage_location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :storage_id %><br />
+    <%= f.check_box :inUse %>
+  </div>
+  <div class="field">
+    <%= f.label :storage_id %><br />
+    <%= f.select :storage_id, 
+    			  Storage.all.map {|l| [l.name, l.id]},
+    			  prompt: "Bitte wählen"%>
+  </div>
+  <div class="field">
+    <%= f.label :filePath_id %><br />
+    <%= f.select :filePath_id,
+    			  Location.where(usagetype: 1).map {|l| [l.name, l.id]},
+    			  prompt: "Bitte wählen" %>
+  </div>
+  <div class="field">
+    <%= f.label :webPath_id %><br />
+    <%= f.select :webPath_id,
+    			  Location.where(usagetype: 1).map {|l| [l.name, l.id]},
+    			  prompt: "Bitte wählen"  %>
+  </div>
+  <div class="field">
+    <%= f.label :tnFilePath_id %><br />
+    <%= f.select :tnFilePath_id,
+    			  Location.where(usagetype: 1).map {|l| [l.name, l.id]},
+    			  prompt: "Bitte wählen"  %>
+  </div>
+  <div class="field">
+    <%= f.label :tnWebPath_id %><br />
+    <%= f.select :tnWebPath_id,
+    			  Location.where(usagetype: 1).map {|l| [l.name, l.id]},
+    			  prompt: "Bitte wählen" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

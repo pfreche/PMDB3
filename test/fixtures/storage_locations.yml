@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  storage_id: 1
+  filePath_id: 1
+  webPath_Id: 1
+  tnFilePath_id: 1
+  inUse: false
+
+two:
+  storage_id: 1
+  filePath_id: 1
+  webPath_Id: 1
+  tnFilePath_id: 1
+  inUse: false

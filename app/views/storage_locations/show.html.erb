@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Storage:</b>
+  <%= @storage_location.storage.name %>
+</p>
+
+<p>
+  <b>Filepath:</b>
+  <%= @storage_location.filePath.name %>
+</p>
+
+<p>
+  <b>Webpath id:</b>
+  <%= @storage_location.webPath.name %>
+</p>
+
+<p>
+  <b>Tnfilepath:</b>
+  <%= @storage_location.tnFilePath.name %>
+</p>
+
+<p>
+  <b>Inuse:</b>
+  <%= @storage_location.inUse %>
+</p>
+
+
+<%= link_to 'Edit', edit_storage_location_path(@storage_location) %> |
+<%= link_to 'Back', storage_locations_path %>
