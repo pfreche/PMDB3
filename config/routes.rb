@@ -1,4 +1,8 @@
 PMDB3::Application.routes.draw do
+  resources :folders
+
+  resources :media_objects
+
   resources :storage_locations do
     put 'set', :on => :member
   end

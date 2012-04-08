@@ -1,0 +1,29 @@
+<h1>Listing media_objects</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Modified</th>
+    <th>Mod date</th>
+    <th>Folder</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @media_objects.each do |media_object| %>
+  <tr>
+    <td><%= media_object.name %></td>
+    <td><%= media_object.modified %></td>
+    <td><%= media_object.mod_date %></td>
+    <td><%= media_object.folder_id %></td>
+    <td><%= link_to 'Show', media_object %></td>
+    <td><%= link_to 'Edit', edit_media_object_path(media_object) %></td>
+    <td><%= link_to 'Destroy', media_object, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Media object', new_media_object_path %>

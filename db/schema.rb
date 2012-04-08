@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405151742) do
+ActiveRecord::Schema.define(:version => 20120406214844) do
 
   create_table "agroups", :force => true do |t|
     t.string "name"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20120405151742) do
     t.integer "storage_id"
     t.string  "mpath"
     t.string  "lfolder"
-    t.integer "mfile_id"
+    t.integer "mediaObject_id"
   end
 
   add_index "folders", ["storage_id"], :name => "index_folders_on_storage_id"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(:version => 20120405151742) do
     t.string   "uri"
     t.string   "description"
     t.integer  "usagetype"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "mediaObject_id"
+  end
+
+  create_table "media_objects", :force => true do |t|
+    t.string   "name"
+    t.datetime "modified"
+    t.date     "mod_date"
+    t.integer  "folder_id"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

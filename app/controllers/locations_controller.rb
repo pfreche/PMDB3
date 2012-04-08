@@ -24,7 +24,8 @@ class LocationsController < ApplicationController
   # GET /locations/new
   # GET /locations/new.json
   def new
-    @location = Location.new
+    @location = Location.new(params[:location])
+#location.href = "http://127.0.0.1/locations/new?location[uri]="+location.href
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,9 +42,14 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(params[:location])
+    
+    @media_object = Bookmark.new
+#   @media_object.save
+    @location.mediaObject =  @media_object
 
     respond_to do |format|
       if @location.save
+ #      @location.mediaObject =  @media_object
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
         format.json { render json: @location, status: :created, location: @location }
       else

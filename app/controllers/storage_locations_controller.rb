@@ -42,6 +42,7 @@ class StorageLocationsController < ApplicationController
   def create
     @storage_location = StorageLocation.new(params[:storage_location])
 
+
     respond_to do |format|
       if @storage_location.save
         format.html { redirect_to @storage_location, notice: 'Storage location was successfully created.' }
