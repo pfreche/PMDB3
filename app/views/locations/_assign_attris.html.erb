@@ -1,0 +1,23 @@
+<%= form_for(@location.mediaObject.attris) do |f| %>
+
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, size: 100%>
+  </div>
+  <div class="field">
+    <%= f.label :uri %><br />
+    <%= f.text_field :uri, size: 100%>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, size: 100 %>
+  </div>
+  <div class="field">
+    <%= f.label :usagetype %><br />
+    <%= f.number_field :usagetype %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

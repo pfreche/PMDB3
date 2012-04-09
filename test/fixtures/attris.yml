@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  agroup_id: 1
+  id_sort: MyString
+  parent_id: 1
+  keycode: MyString
+  group: MyString
+
+two:
+  name: MyString
+  agroup_id: 1
+  id_sort: MyString
+  parent_id: 1
+  keycode: MyString
+  group: MyString

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120406214844) do
+ActiveRecord::Schema.define(:version => 20120408220157) do
 
   create_table "agroups", :force => true do |t|
     t.string "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120406214844) do
     t.integer "id_sort"
     t.integer "parent_id"
     t.string  "keycode"
+    t.string  "group"
   end
 
   add_index "attris", ["agroup_id"], :name => "index_attris_on_agroup_id"

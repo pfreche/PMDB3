@@ -1,0 +1,14 @@
+class CreateAttris < ActiveRecord::Migration
+  def change
+    create_table :attris do |t|
+      t.string :name
+      t.integer :agroup_id
+      t.string :id_sort
+      t.integer :parent_id
+      t.string :keycode
+      t.string :group
+
+      t.timestamps
+    end
+  end
+end

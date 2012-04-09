@@ -1,4 +1,6 @@
 PMDB3::Application.routes.draw do
+  resources :attris
+
   resources :folders
 
   resources :media_objects
