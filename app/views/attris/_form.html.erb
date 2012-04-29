@@ -17,7 +17,10 @@
   </div>
   <div class="field">
     <%= f.label :agroup_id %><br />
-    <%= f.number_field :agroup_id %>
+    <%= f.select :agroup_id, 
+    			  Agroup.all.map {|l| [l.name, l.id]},
+    			  prompt: "Bitte wählen"%>
+    			  
   </div>
   <div class="field">
     <%= f.label :id_sort %><br />
@@ -32,8 +35,8 @@
     <%= f.text_field :keycode %>
   </div>
   <div class="field">
-    <%= f.label :group %><br />
-    <%= f.text_field :group %>
+    <%= f.label :group_id %><br />
+    <%= f.text_field :group_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

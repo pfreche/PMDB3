@@ -1,9 +1,19 @@
 PMDB3::Application.routes.draw do
+  resources :tags
+
+  resources :agroups
+
+  get 'attris/search' => 'attris#search'
+  post 'attris/find' => 'attris#find', as: 'find_attris'
   resources :attris
 
   resources :folders
 
-  resources :media_objects
+  resources :media_objects do
+    post 'add_attri', :on => :member
+    delete 'remove_attri', :on => :member
+    get 'edit2', :on => :member
+  end
 
   resources :storage_locations do
     put 'set', :on => :member
@@ -12,6 +22,7 @@ PMDB3::Application.routes.draw do
   resources :locations
 
   resources :storages
+
 
 # The priority is based upon order of creation:
 # first created -> highest priority.

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  media_object_id: 1
+  attri_id: 1
+
+two:
+  media_object_id: 1
+  attri_id: 1

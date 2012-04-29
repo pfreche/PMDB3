@@ -1,0 +1,14 @@
+<h1> Search attri</h1>
+
+<%= form_tag find_attris_path do %>
+
+  <div class="field">
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name %>
+  </div>
+  
+  <div class="actions">
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>
+<%= link_to 'Back', attris_path %>

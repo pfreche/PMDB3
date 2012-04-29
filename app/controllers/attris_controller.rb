@@ -80,4 +80,28 @@ class AttrisController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  # POST /attris/find
+
+  def find
+
+    attri = Attri.find_by_name(params[:name])
+    if attri != nil
+      a =MediaObject.joins(:attris).where("attris.id = ?", attri.id)
+ #     @media_objects = attri.mediaObjects
+      @media_objects = a 
+      render 'media_objects/index'
+    else
+      @newAttribute = true
+      render 'search'
+    end
+
+  end
+
+  # GET /attriSearch
+
+  def search
+
+  end
+
 end

@@ -1,31 +1,34 @@
 <h1>Listing attris</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Agroup</th>
-    <th>Id sort</th>
-    <th>Parent</th>
-    <th>Keycode</th>
-    <th>Group</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<tr>
+		<th>Name</th>
+		<th>Agroup</th>
+		<th>Id sort</th>
+		<th>Parent</th>
+		<th>Keycode</th>
+		<th>Group</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
 
-<% @attris.each do |attri| %>
-  <tr>
-    <td><%= attri.name %></td>
-    <td><%= attri.agroup_id %></td>
-    <td><%= attri.id_sort %></td>
-    <td><%= attri.parent_id %></td>
-    <td><%= attri.keycode %></td>
-    <td><%= attri.group %></td>
-    <td><%= link_to 'Show', attri %></td>
-    <td><%= link_to 'Edit', edit_attri_path(attri) %></td>
-    <td><%= link_to 'Destroy', attri, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+	<% @attris.each do |attri| %>
+	<tr>
+		<td><%= attri.id %></td>
+		<td><%= attri.name%></td>
+		<td><%= attri.agroup.name %></td>
+		<td><%= attri.id_sort %></td>
+		<td><%= attri.parent_id %></td>
+		<td><%= attri.keycode %></td>
+		<td><%= attri.group_id %></td>
+		<td><%= link_to 'Show', attri %></td>
+		<td><%= link_to 'Edit', edit_attri_path(attri) %></td>
+		<td><%= link_to 'Destroy', attri, confirm: 'Are you sure?', method: :delete %></td>
+
+		<td> <%= link_to attri.mediaObjects.count, find_attris_path+"?name="+attri.name, method: :post %>
+	</tr>
+	<% end %>
 </table>
 
 <br />

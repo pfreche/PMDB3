@@ -1,0 +1,37 @@
+<div class='attri'>
+
+test
+	</div>
+	<div class='attril'>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Agroup</th>
+    <th>Id sort</th>
+    <th>Parent</th>
+    <th>Keycode</th>
+    <th>Group</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @attris = @location.mediaObject.attris
+   @attris.each do |attri| %>
+  <tr>
+    <td><%= attri.name %></td>
+    <td><%= attri.agroup_id %></td>
+    <td><%= attri.id_sort %></td>
+    <td><%= attri.parent_id %></td>
+    <td><%= attri.keycode %></td>
+    <td><%= attri.group %></td>
+    <td><%= link_to 'Show', attri %></td>
+    <td><%= link_to 'Edit', edit_attri_path(attri) %></td>
+    <td><%= link_to 'Destroy', remove_attri_media_object_path(@location.mediaObject)+"?attri_id="+attri.id.to_s, confirm: 'Are you sure?', method: :delete%></td>
+  </tr>
+<% end %>
+</table>
+<%= form_tag add_attri_media_object_path(@location.mediaObject), remote: true do%>
+<%=text_field_tag :name, ""%>
+<%= submit_tag "ADD"%>
+<% end%>
+</div>

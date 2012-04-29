@@ -13,6 +13,7 @@
 
 <% @locations.each do |location| %>
   <tr>
+    <td><%= location.mediaObject_id %></td>
     <td><%= location.name %></td>
     <td><%= link_to location.name , location.uri %></td>
     <td><%= location.description %></td>

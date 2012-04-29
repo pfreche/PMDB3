@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120408220157) do
+ActiveRecord::Schema.define(:version => 20120428054645) do
 
   create_table "agroups", :force => true do |t|
     t.string "name"
@@ -31,11 +31,16 @@ ActiveRecord::Schema.define(:version => 20120408220157) do
     t.integer "id_sort"
     t.integer "parent_id"
     t.string  "keycode"
-    t.string  "group"
+    t.integer "group_id"
   end
 
   add_index "attris", ["agroup_id"], :name => "index_attris_on_agroup_id"
   add_index "attris", ["keycode"], :name => "index_attris_on_keycode"
+
+  create_table "attris_media_objects", :force => true do |t|
+    t.integer "media_object_id"
+    t.integer "attri_id"
+  end
 
   create_table "attris_mfiles", :id => false, :force => true do |t|
     t.integer "mfile_id"
@@ -69,9 +74,9 @@ ActiveRecord::Schema.define(:version => 20120408220157) do
     t.datetime "modified"
     t.date     "mod_date"
     t.integer  "folder_id"
-    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "typ_id"
   end
 
   create_table "mfiles", :force => true do |t|
@@ -133,6 +138,14 @@ ActiveRecord::Schema.define(:version => 20120408220157) do
     t.string  "filepath_tn", :limit => 100
     t.string  "webpath_tn",  :limit => 50
     t.string  "path",        :limit => 50
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "mediaObject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
