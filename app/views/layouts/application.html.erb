@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id='menu'>
+	Menue
+	<%=link_to 'Locations', locations_path%>
+	<%=link_to 'MO', media_objects_path%>
+</div>
 
 <%= yield %>
 
