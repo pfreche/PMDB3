@@ -3,7 +3,7 @@ class FoldersController < ApplicationController
   # GET /folders.json
   def index
     
-    if   storage_id = params[:storage_id]
+    if   storage_id = params[:storage_id] # das = ist RICHTIG.
        @folders = Folder.where("storage_id = ?", storage_id)
     else
        @folders = Folder.all

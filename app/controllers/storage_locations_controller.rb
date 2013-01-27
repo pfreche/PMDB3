@@ -127,7 +127,13 @@ class StorageLocationsController < ApplicationController
        unless f
          f = Folder.new(storage_id: @storage.id, lfolder: lfolder, mpath: mpath)
          m = MediaObject.new(name: lfolder, typ_id: 1024)
-         f.mediaObject = m
+ #        f.mediaObject = m
+ #        f.save
+ #        m.folder_id = f.id
+  #       m.save
+         m.folder = f
+         m.save
+         f.mediaObject_id = m.id
          f.save
        end
        a

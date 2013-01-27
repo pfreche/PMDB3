@@ -81,6 +81,10 @@ class MediaObjectsController < ApplicationController
   # DELETE /media_objects/1.json
   def destroy
     @media_object = MediaObject.find(params[:id])
+    folder = @media_object.folder
+    if folder != nil and  @media_object.folder.mediaObject_id == @media_object.id  # MO reprsents a folder
+      folder.destroy
+    end
     @media_object.destroy
 
     respond_to do |format|
