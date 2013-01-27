@@ -1,29 +1,45 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Storage:</b>
-  <%= @storage_location.storage.name %>
+<p id="notice">
+	<%= notice %>
 </p>
 
 <p>
-  <b>Filepath:</b>
-  <%= @storage_location.filePath.name %>
+
+	<b>Storage:</b>
+	<%= @storage_location.storage.name %>
 </p>
 
-<p>
-  <b>Webpath id:</b>
-  <%= @storage_location.webPath.name %>
-</p>
+<table>
+	<th>
 
-<p>
-  <b>Tnfilepath:</b>
-  <%= @storage_location.tnFilePath.name %>
-</p>
+	<tr>
+		<td>Pfadtyp</td>
+		<td>Pfad</td>
+		<td>Storage Pfad</td>
+	<tr>
+		<td>Filepath</td>
+		<td> <%= @storage_location.filePath.name %> </td>
+		<td>
+		<%= link_to @storage_location.filePath.uri, location_path(@storage_location.filePath_id)%>
+       </td>
+       <td>/</td>
+       <td><%=@storage_location.storage.path%></td>
+	</tr>
+	<tr>
+		<td> Webpath <td> <%= @storage_location.webPath.name %>
+	</tr>
+	<tr>
+		<td>Tnfilepath <td><%= @storage_location.tnFilePath.name %>
+	</tr>
+	<tr>
 
-<p>
-  <b>Inuse:</b>
-  <%= @storage_location.inUse %>
-</p>
+		<td>Inuse</td>
+		<td><%= @storage_location.inUse %></td>
+	</tr>
+
+</table>
+
+<%= link_to "Scan Directory", scan_directory_storage_location_path(@storage_location), method: :put%>
+<%= link_to "Scan and add Files", scan_files_storage_location_path(@storage_location), method: :put%>
 
 
 <%= link_to 'Edit', edit_storage_location_path(@storage_location) %> |

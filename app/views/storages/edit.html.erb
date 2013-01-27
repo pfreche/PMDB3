@@ -2,5 +2,35 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @storage %> |
-<%= link_to 'Back', storages_path %>
+ <%@storage_locations = @storage.storageLocations%>
+<table>
+	<tr>
+		<th>In use</th>
+		<th>Storage</th>
+		<th>Filepath</th>
+		<th>Webpath</th>
+		<th>Tnfilepath</th>
+		<th>Tnwebpath</th>		
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @storage_locations.each do |storage_location| %>
+	<tr>
+		<td><%= storage_location.inUse%> <%= link_to 'Set', set_storage_location_path(storage_location), method: :put %></td>
+		<td><%= storage_location.storage.name %></td>
+		<td><%= storage_location.filePath.name %></td>
+		<td><%= storage_location.webPath.name %></td>
+		<td><%= storage_location.tnFilePath.name%></td>
+		<td><%= storage_location.tnWebPath.name %></td>
+		<td><%= link_to 'Show', storage_location %></td>
+		<td><%= link_to 'Edit', edit_storage_location_path(storage_location) %></td>
+		<td><%= link_to 'Destroy', storage_location, confirm: 'Are you sure?', method: :delete %></td>
+	</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back', storages_path %>|
+<%= link_to 'New Storage Location', new_storage_location_path+"?storage_id="+@storage.id.to_s%>
+<p></p>
+<%= link_to 'Folders', folders_path+"?storage_id="+@storage.id.to_s%>

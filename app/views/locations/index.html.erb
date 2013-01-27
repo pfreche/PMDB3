@@ -3,8 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Uri</th>
-    <th>Description</th>
+
     <th>Usagetype</th>
     <th></th>
     <th></th>
@@ -14,9 +13,7 @@
 <% @locations.each do |location| %>
   <tr>
     <td><%= location.mediaObject_id %></td>
-    <td><%= location.name %></td>
     <td><%= link_to location.name , location.uri %></td>
-    <td><%= location.description %></td>
     <td><%= location.usagetype %></td>
     <td><%= link_to 'Show', location %></td>
     <td><%= link_to 'Edit', edit_location_path(location) %></td>

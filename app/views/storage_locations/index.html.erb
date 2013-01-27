@@ -11,7 +11,13 @@
 		<th></th>
 		<th></th>
 	</tr>
-	<% @storage_locations.each do |storage_location| %>
+	<% name1 = ""
+	@storage_locations.each do |storage_location| %>
+	<% name = storage_location.storage.name
+	     unless name == name1
+	         name1 = name%>
+	       <tr><td><hr></tr>
+	     <%end%>
 	<tr>
 		<td><%= storage_location.inUse%> <%= link_to 'Set', set_storage_location_path(storage_location), method: :put %></td>
 		<td><%= storage_location.storage.name %></td>
@@ -26,4 +32,3 @@
 	<% end %>
 </table>
 <br />
-<%= link_to 'New Storage location', new_storage_location_path %> 

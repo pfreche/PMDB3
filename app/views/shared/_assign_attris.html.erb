@@ -30,12 +30,12 @@
 <% @attris = @media_object.attris
    @attris.each do |attri| %>
     <div class='attribute'> <%= attri.name %> 
-    <%= link_to 'X', remove_attri_media_object_path(@media_object)+"?attri_id="+attri.id.to_s, confirm: 'Are you sure?', method: :delete%>
+    <%= link_to 'X', remove_attri_media_object_path(@media_object)+"?attri_id="+attri.id.to_s, confirm: 'Are you sure?', method: :delete, remote: true%>
   </div>
  <% end %>
 
 <%= form_tag add_attri_media_object_path(@media_object), remote: true do%>
-<%=text_field_tag :name, @attri_name%>
+<%=text_field_tag :name, @attri_name, data: {autocomplete_source: autocomplete_attris_path}%>
 <%= submit_tag "ADD"%>
 <%if @newAttribute == true %>
 <%=submit_tag "Create" %>

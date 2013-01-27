@@ -15,17 +15,20 @@
     <%= f.label :storage_id %><br />
     <%= f.check_box :inUse %>
   </div>
+     	
   <div class="field">
-    <%= f.label :storage_id %><br />
-    <%= f.select :storage_id, 
-    			  Storage.all.map {|l| [l.name, l.id]},
-    			  prompt: "Bitte wählen"%>
-  </div>
+    <%= f.label :storage %><br />
+    <%= link_to @storage_location.storage.name, edit_storage_path(@storage_location.storage)%>
+
+    <%= f.hidden_field :storage_id %>
+  </div
+  
   <div class="field">
     <%= f.label :filePath_id %><br />
     <%= f.select :filePath_id,
     			  Location.where(usagetype: 1).map {|l| [l.name, l.id]},
     			  prompt: "Bitte wählen" %>
+
   </div>
   <div class="field">
     <%= f.label :webPath_id %><br />

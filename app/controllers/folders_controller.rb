@@ -2,7 +2,12 @@ class FoldersController < ApplicationController
   # GET /folders
   # GET /folders.json
   def index
-    @folders = Folder.all
+    
+    if   storage_id = params[:storage_id]
+       @folders = Folder.where("storage_id = ?", storage_id)
+    else
+       @folders = Folder.all
+    end 
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +85,5 @@ class FoldersController < ApplicationController
       format.json { head :ok }
     end
   end
+
 end

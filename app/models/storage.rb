@@ -1,7 +1,8 @@
 class Storage < ActiveRecord::Base
+    has_many :storageLocations
   
   def filePath
-    getSl.filePath.name
+    getSl.filePath.uri+"/"+path
   end
 
   def webPath

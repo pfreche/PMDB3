@@ -5,7 +5,9 @@ PMDB3::Application.routes.draw do
 
   get 'attris/search' => 'attris#search'
   post 'attris/find' => 'attris#find', as: 'find_attris'
-  resources :attris
+  resources :attris do
+    get 'autocomplete', :on => :collection
+  end
 
   resources :folders
 
@@ -13,13 +15,23 @@ PMDB3::Application.routes.draw do
     post 'add_attri', :on => :member
     delete 'remove_attri', :on => :member
     get 'edit2', :on => :member
+    get 'new_tag', :on => :member
+    get 'update_tag', :on => :member
+    get 'delete_tag', :on => :member
+    get 'pic', :on => :member
   end
 
   resources :storage_locations do
     put 'set', :on => :member
+    put 'scan_directory', :on => :member
+    put 'scan_files', :on => :member
+    
   end
 
-  resources :locations
+  resources :locations do
+    post 'upd_and_check', :on => :member
+  end
+
 
   resources :storages
 

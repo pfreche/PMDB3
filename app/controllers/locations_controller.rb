@@ -37,15 +37,10 @@ class LocationsController < ApplicationController
   # GET /locations/1/edit
   def edit
     @location = Location.find(params[:id])
-    @media_object = @location.mediaObject
-    unless @media_object
-      @media_object = Bookmark.new
-      @media_object.name = "bookmark"
-    @media_object.typ_id = 1
-    @media_object.save
-    @location.mediaObject =  @media_object
-    @location.save
-    end
+    h = Help.new
+    @media_object = h.get_media_object(@location, "bookmark")
+    @tag = h.get_tag(@media_object)
+
   end
 
   # POST /locations
@@ -53,11 +48,11 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(params[:location])
 
-    @media_object = Bookmark.new
-    @media_object.name = "bookmark"
-
-    @media_object.typ_id = 1
-    @location.mediaObject =  @media_object
+    ## Handling von verbundenen Objekten
+    h = Help.new
+    @media_object=h.new_media_object(@location, "bookmark")
+    #    view_context.new_tag(@media_object)  // funktioniert
+    @tag = h.new_tag(@media_object, params[:location][:name], nil)
 
     if @location.usagetype == 99
       @target = @location.uri
@@ -104,4 +99,20 @@ class LocationsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def upd_and_check
+    @location = Location.find(params[:id])
+    @media_object = @location.mediaObject
+
+ #   if @location.update_attributes(params[:location])
+      if File.exist?(@location.uri)
+        @directoryOK = "Exists"
+      end
+      render action: "edit"
+  #  else
+   #   format.html { render action: "edit" }
+  #    format.json { render json: @location.errors, status: :unprocessable_entity }
+  #  end
+  end
+
 end

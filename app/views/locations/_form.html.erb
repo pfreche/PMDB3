@@ -18,10 +18,9 @@
   <div class="field">
     <%= f.label :uri %><br />
     <%= f.text_field :uri, size: 100%>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description, size: 100 %>
+
+    <%=link_to("Check", upd_and_check_location_path(@location.id||1), method: :post) if @location.id%>
+    <%= @directoryOK%>
   </div>
   <div class="field">
     <%= f.label :usagetype %><br />

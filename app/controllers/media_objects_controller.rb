@@ -98,22 +98,62 @@ class MediaObjectsController < ApplicationController
     attri = Attri.find_by_name(params[:name])
     if attri != nil
        @media_object.attris << attri unless @media_object.attris.exists?(attri)
+       @attri_name = nil
     else
       @newAttribute = true
     end
-
+    
     respond_to do |format|
       format.html {  redirect_to edit_location_path(@media_object.location)}
       format.js
     end
-
   end
-
-  def remove_attri
+  
+   def remove_attri
     @media_object = MediaObject.find(params[:id])
     attri = Attri.find(params[:attri_id])
     @media_object.attris.delete(attri)
-    redirect_to edit_location_path(@media_object.location)
+ #   redirect_to edit_location_path(@media_object.location)
+    render 'add_attri.js'
   end
+  
+  def new_tag
+    @media_object = MediaObject.find(params[:id])
+    @tag = @media_object.tag
+    unless @tag
+    @tag = Tag.new
+    @media_object.tag = @tag
+    end
+    respond_to do |format|
+      format.html {  redirect_to media_object_path(@media_object)}
+      format.js
+    end
+  end
+
+  def update_tag
+    
+    @tag = Tag.find(params[:id])
+
+      if @tag.update_attributes(params[:tag])
+         render 'delete_tag.js'
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @tag.errors, status: :unprocessable_entity }
+      end
+  end
+  
+  def delete_tag
+    @media_object = MediaObject.find(params[:id])
+    @tag = @media_object.tag
+    @media_object.tag = nil
+
+   render 'delete_tag.js'
+  end
+
+  def pic
+    @media_object = MediaObject.find(params[:id])
+         
+  end
+
 end
 

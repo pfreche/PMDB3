@@ -10,4 +10,5 @@ class StorageLocation < ActiveRecord::Base
   belongs_to :webPath,  class_name: "Location"
   belongs_to :tnFilePath, class_name: "Location"
   belongs_to :tnWebPath, class_name: "Location"
+
 end

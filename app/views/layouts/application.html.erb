@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>PMDB3</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div id='menu'>
-	Menue
-	<%=link_to 'Locations', locations_path%>
-	<%=link_to 'MO', media_objects_path%>
-</div>
+	<head>
+		<title>PMDB3</title>
+		<%= stylesheet_link_tag    "application" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id='menu'>
+			Menue
 
-<%= yield %>
+			<%= link_to 'MO', media_objects_path%>
+			<%= link_to 'Tags', tags_path%>
+			<%= link_to 'Attributes', attris_path%>
+			<%= link_to 'Locations', locations_path%>
+			<%= link_to 'Storages', storages_path%>
+			<%= link_to 'Storage Locations', storage_locations_path%>
 
-</body>
+		</div>
+
+		<%= yield %>
+
+	</body>
 </html>

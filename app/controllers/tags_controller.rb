@@ -62,6 +62,7 @@ class TagsController < ApplicationController
       if @tag.update_attributes(params[:tag])
         format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
         format.json { head :ok }
+        format.js {render 'media_objects/new_tag.jgs'}
       else
         format.html { render action: "edit" }
         format.json { render json: @tag.errors, status: :unprocessable_entity }

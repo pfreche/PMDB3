@@ -1,4 +1,10 @@
 class AttrisController < ApplicationController
+  # GET /attris/autocomplete
+  def autocomplete
+    @attris = Attri.order(:name).where("name like ?", "%#{params[:term]}%")
+    render json: @attris.map(&:name)
+  end
+  
   # GET /attris
   # GET /attris.json
   def index
