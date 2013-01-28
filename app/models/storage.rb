@@ -1,5 +1,6 @@
 class Storage < ActiveRecord::Base
-    has_many :storageLocations
+    has_many :storageLocations, dependent: :destroy
+    has_many :folders, dependent: :destroy
   
   def filePath
     getSl.filePath.uri+"/"+path
